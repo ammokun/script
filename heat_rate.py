@@ -7,7 +7,7 @@ ee=1.602176634e-19
 
 heat=np.zeros((302,1555))
 
-file= open("./calc0708/output_reaction/00010.dat","r")
+file= open("../1dcode_soturon_data/calc0725/output_reaction/00001.dat","r")
 string = file.read()
 file.close()
 string = string.replace(","," ")
@@ -16,7 +16,7 @@ file.write(string)
 file.close()
 r_rate = np.genfromtxt("temp.dat")
 
-file= open("energy_coefficient_data.dat","r")
+file= open("../1dcode_soturon_data/energy_coefficient_data.dat","r")
 string = file.read()
 file.close()
 string = string.replace(","," ")
@@ -26,7 +26,7 @@ file.close()
 coefficient = np.genfromtxt("temp.dat")
 
 reaction_name=list(range(1))
-file= open("name.txt","r")
+file= open("../1dcode_soturon_data/name.txt","r")
 while True:
         string = file.readline()
         reaction_name.append(string)
@@ -50,6 +50,13 @@ coefficient = np.round(coefficient,2)
 for j in range(1,1555):
         heat[:,j] = coefficient[j-1,1] * r_rate[:,j]
 
+ene_relax = np.sum(heat[:,134:253], axis=1)
+joule = np.sum(heat, axis=1)
+
+ene_relax = ene_relax*ee
+joule = joule*ee
+#print(joule)
+print(ene_relax)
 #print(heat[:,1])
 
 #各反応の
@@ -76,7 +83,7 @@ for j in range(1,1555):
 index=list(range(0))
 reaction_name_sorted=list(range(0))
 
-
+"""
 #加熱ソース最大値が大きい反応のインデックスを表示
 for i in range(0,100):
         for j in range(1,1555):
@@ -90,6 +97,7 @@ for i in range(0,100):
 for i in range(0,100):
         print(str('{:e}'.format(sorted_heat[i]))+" ",end="")
         print(reaction_name_sorted[i])
+"""
 
 """"
 plt.plotene_loss[:,0],vibrate5,label="N2(v5)")
@@ -125,14 +133,23 @@ plt.plot(ene_loss[:,0],vibrate,label="vibrate")
 
 #plt.plot(ene_loss[:,0],main[:,24],label="vibrate")
 """
-
+"""
 plt.plot(max_heat)
 
 ax = plt.gca()
 ax.set_yscale('log')
 plt.legend(loc='best')
-ax.set_ylim([1,1.5e12])
+ax.set_xlim([134,252])
+ax.set_ylim([1,1E10])
+"""
 
+#plt.plot(joule)
+plt.plot(ene_relax)
+ax = plt.gca()
+ax.set_yscale('log')
+plt.legend(loc='best')
+ax.set_xlim([1,300])
+#ax.set_ylim([1,1E13])
 plt.show()
 
 
