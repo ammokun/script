@@ -1,14 +1,14 @@
 #!/bin/sh
 
-point1=50
-point2=100
-point3=150
-point4=200
-point5=250
-point6=300
-point7=350
+point1=100
+point2=150
+point3=200
+point4=250
+point5=300
+point6=350
+point7=400
 
-directry='./170_160_w_n2c4/output_main/'
+directry='./work201016/170_120/output_main/'
 #directry='./'
 threshold=1E15
 file1=$(printf "%s%05d.dat" $directry $point1)

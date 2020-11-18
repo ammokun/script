@@ -4,19 +4,19 @@
 #set ylabel 'Partial S_e [cm^-^3s^-^1]'
 #set y2label "Total S_e [10^2^2cm^-^3s^-^1]" 
 set yrange [1E10:*]
-set xrange [2.2:2.3]
+set xrange [0:3]
 set y2tics
-set xtics 0.1
+set xtics 0.5
 set size square
 set ytics nomirror
 set key outside
-#set logscale y
+set logscale y
 set xlabel font "Arial, 25"
 set ylabel font "Arial, 25"
 set y2label font "Arial, 25"
 set tics font "Arial, 25"
 set key font "Arial, 15"
-#set ytics format "10^{%L}"
+set ytics format "10^{%L}"
 set lmargin 15
 set bmargin 5
 plot file.".dat" u ($1/100):($32*1E-6) axis x1y1 w l lw 2 lc rgb"red" title "Electron collision"

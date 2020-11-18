@@ -1,12 +1,12 @@
 #!/bin/sh
 
-point1=25
-point2=50
-point3=75
-point4=100
-point5=125
-point6=150
-point7=175
+point1=50
+point2=100
+point3=150
+point4=200
+point5=250
+point6=300
+point7=350
 
 #directry='./output_main/'
 directry='./work201016/170_140/output_main/'

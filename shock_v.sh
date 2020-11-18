@@ -1,13 +1,14 @@
 #!/bin/sh
 
-start=10
-end=30
+start=50
+end=150
 
 threshold=1E15
 
-file1=$(printf "%05d.dat" $start)
-file2=$(printf "%05d.dat" $end)
+directry='./work201016/output_main/'
 
+file1=$(printf "%s%05d.dat" $directry $start)
+file2=$(printf "%s%05d.dat" $directry $end)
 #echo $file1
 
 p1=$(cat $file1 | awk -F',' '$12/2.439E25>1.2{print $1;exit}')
@@ -20,6 +21,6 @@ echo $p1
 echo $p2
 
 #echo "($p1-$p2)*1.7635*10^-5" | bc -l 
-velosity=$(echo "(($p1-$p2)*1.7635*10)/(($end-$start)*0.058)" | bc -l)
+velosity=$(echo "(($p1-$p2)*1.7635*1E-5)/(($end-$start)*5.88E-12*1E3)" | bc -l)
 
 echo $velosity

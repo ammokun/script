@@ -4,11 +4,11 @@
 #set ylabel 'Partial S_e [cm^-^3s^-^1]'
 #set y2label "Total S_e [10^2^2cm^-^3s^-^1]" 
 set yrange [1E10:*]
-set xrange [1.9:2.3]
+set xrange [0:3]
 set y2tics
 set logscale y2
-set y2range [1E1:1E16]
-set xtics 0.1
+set y2range [1E1:*]
+set xtics 0.5
 set size square
 set ytics nomirror
 set key outside

@@ -2,10 +2,10 @@
 
 set terminal aqua dashed 
 set yrange [1E1:*]
-set xrange [0:3]
+set xrange [2.2:2.3]
 set key outside
 set logscale y
-set xtics 0.1
+set xtics 0.5
 #set mxtics 
 
 set size square
