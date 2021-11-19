@@ -1,8 +1,8 @@
 #gnuplot -persist  -e "file='00002'" electron_rate.gp
 
 set terminal aqua dashed 
-set yrange [1E1:*]
-set xrange [2.2:2.3]
+set yrange [1:*]
+set xrange [0:3]
 set key outside
 set logscale y
 set xtics 0.5

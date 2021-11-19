@@ -1,6 +1,6 @@
 #!/bin/sh
 
-#bash ion_front.sh ../work210409/170_040_nonrad/output_main/ 100 400 1E15 1000
+#bash shock_front.sh ../work210409/170_040_nonrad/output_main/ 100 400 1E15 1000
 
 sout=$5
 dx=$(echo 'scale=10; 2.99792458/(1.70)'|bc -l) #299792458/(170*10^9)*1000 mm
@@ -27,6 +27,7 @@ point7=$(($2+$delta*6))
 #directry='./work201016/170_120/output_main/'
 directry=$1
 #directry='./'
+
 threshold=$4
 file1=$(printf "%s%05d.dat" $directry $point1)
 file2=$(printf "%s%05d.dat" $directry $point2)
@@ -36,13 +37,13 @@ file5=$(printf "%s%05d.dat" $directry $point5)
 file6=$(printf "%s%05d.dat" $directry $point6)
 file7=$(printf "%s%05d.dat" $directry $point7)
 
-p1=$(cat $file1 | awk -v th=$threshold '$3+0>th{print $1 ;exit}')
-p2=$(cat $file2 | awk -v th=$threshold '$3+0>th{print $1 ;exit}')
-p3=$(cat $file3 | awk -v th=$threshold '$3+0>th{print $1 ;exit}')
-p4=$(cat $file4 | awk -v th=$threshold '$3+0>th{print $1 ;exit}')
-p5=$(cat $file5 | awk -v th=$threshold '$3+0>th{print $1 ;exit}')
-p6=$(cat $file6 | awk -v th=$threshold '$3+0>th{print $1 ;exit}')
-p7=$(cat $file7 | awk -v th=$threshold '$3+0>th{print $1 ;exit}')
+p1=$(cat $file1 | awk -v th=$threshold '$12/2.439E25>th{print $1 ;exit}')
+p2=$(cat $file2 | awk -v th=$threshold '$12/2.439E25>th{print $1 ;exit}')
+p3=$(cat $file3 | awk -v th=$threshold '$12/2.439E25>th{print $1 ;exit}')
+p4=$(cat $file4 | awk -v th=$threshold '$12/2.439E25>th{print $1 ;exit}')
+p5=$(cat $file5 | awk -v th=$threshold '$12/2.439E25>th{print $1 ;exit}')
+p6=$(cat $file6 | awk -v th=$threshold '$12/2.439E25>th{print $1 ;exit}')
+p7=$(cat $file7 | awk -v th=$threshold '$12/2.439E25>th{print $1 ;exit}')
 #echo $p1
 p1=$(echo $p1 | sed 's/^0*//')
 p2=$(echo $p2 | sed 's/^0*//')

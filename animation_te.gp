@@ -5,7 +5,7 @@ reset
 load "template.gp"
 set nokey                # 凡例の非表示
 set xrange [0:3]      # x軸方向の範囲の設定
-set yrange [0:3E4]      # y軸方向の範囲の設定
+set yrange [0:3]      # y軸方向の範囲の設定
 set size square          # 図を正方形にする
 #set xl "x"
 #set yl "n_e []"

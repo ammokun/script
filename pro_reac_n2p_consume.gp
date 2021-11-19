@@ -1,5 +1,5 @@
 load "template.gp"
-set xrange [1.7:2.2]
+set xrange [1.7:2.3]
 set logscale y
 
 plot file.".dat"  u ($1/100):($3*1E-6) w l lw 2 dt (10,5) lc rgb"orange" title"R43 E+N2^+=>N+N(2P)" 

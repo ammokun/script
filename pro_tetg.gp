@@ -2,8 +2,8 @@
  
 load "template.gp"
 
-set yrange [0:1E4]
-set xrange [1.5:2.5]
+set yrange [0:2.5E4]
+set xrange [0:3]
 set size square
 set y2tics
 set y2range [0:*]

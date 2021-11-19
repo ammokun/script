@@ -6,8 +6,9 @@ bol=1.380649e-23
 ee=1.602176634e-19
 
 heat=np.zeros((302,1555))
+x=160
 
-file= open("../work210409/170_020_rad/output_reaction/00001.dat","r")
+file= open("../work210409/170_020_rad/output_reaction/00324.dat","r")
 string = file.read()
 file.close()
 string = string.replace(","," ")
@@ -41,30 +42,14 @@ file.close()
 
 r_rate = np.nan_to_num(r_rate)
 
-coefficient = coefficient*bol/ee
-coefficient = np.round(coefficient,2)
 #print(coefficient[:,1])
 
 #print(r_rate[:,2])
 
-for j in range(1,1555):
-        heat[:,j] = coefficient[j-1,1] * r_rate[:,j]
-
-ene_relax = np.sum(heat[:,134:253], axis=1)
-joule = np.sum(heat, axis=1)
-
-ene_relax = ene_relax*ee
-joule = joule*ee
-#print(joule)
-print(ene_relax)
-#print(heat[:,1])
-
 #各反応の
-max_heat = np.zeros(1555)
+rate_max = np.zeros(1555)
 for j in range(1,1555):
-        max_heat[j] = np.amax(heat[:,j])
-
-max_heat = max_heat*ee
+        rate_max[j] = np.amax(r_rate[x,j])
 
 #print('{:e}'.format(max_heat[1]*ee))
 
@@ -74,29 +59,31 @@ for j in range(1,1555):
 """
 
 #加熱ソースの最大値をソート
-sorted_heat=sorted(max_heat)
-sorted_heat.reverse()
+rate_max_sorted=sorted(rate_max)
+rate_max_sorted.reverse()
 """
 for j in range(1,1555):
         print('{:e}'.format(sorted_heat[j]))
 """
 index=list(range(0))
-reaction_name_sorted=list(range(0))
+rate_name_sorted=list(range(0))
 
 
 #加熱ソース最大値が大きい反応のインデックスを表示
-for i in range(0,100):
+for i in range(1,1555):
         for j in range(1,1555):
-                if(sorted_heat[i]==max_heat[j]):
+                if(rate_max_sorted[i]==rate_max[j]):
                         #print(j)
                         index.append(j)
                         #print(reaction_name[j])
-                        reaction_name_sorted.append(reaction_name[j])
+                        rate_name_sorted.append(reaction_name[j])
 #print(index)
 
-for i in range(0,100):
-        print(str('{:e}'.format(sorted_heat[i]))+" ",end="")
-        print(reaction_name_sorted[i])
+
+for i in range(1,1555):
+        if("E+E" in rate_name_sorted[i]):
+                print(str('{:e}'.format(rate_max_sorted[i]))+" ",end="")
+                print(rate_name_sorted[i])
 
 
 """"
@@ -143,14 +130,13 @@ ax.set_xlim([134,252])
 ax.set_ylim([1,1E10])
 """
 
-"""
-#plt.plot(joule)
-plt.plot(ene_relax)
-ax = plt.gca()
-ax.set_yscale('log')
-plt.legend(loc='best')
-ax.set_xlim([1,300])
-#ax.set_ylim([1,1E13])
-plt.show()
-"""
 
+#plt.plot(joule)
+#plt.plot(-joule)
+##plt.plot(ene_relax)
+#ax = plt.gca()
+#ax.set_yscale('log')
+#plt.legend(loc='best')
+#ax.set_xlim([1,300])
+##ax.set_ylim([1,1E13])
+#plt.show()
